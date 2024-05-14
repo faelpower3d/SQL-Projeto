@@ -23,9 +23,11 @@
         $data_nasc = $_POST["data_nasc"];        
         $salario = $_POST["salario"];
         
-        $query = "INSERT INTO  clientes(nome,endereco,numero,bairro,cidade,estado,email,cpf_cnpj,rg,telefone,celular,data_nasc,salario)
+        $query = "INSERT INTO  clientes(nome,endereco,numero,bairro,cidade,estado,email,
+        cpf_cnpj,rg,telefone,celular,data_nasc,salario)
         VALUES ('$nome','$endereco','$numero',
-        '$bairro','$cidade','$estado','$email','$cpf_cnpj','$rg','$telefone','$celular','$data_nasc','$salario')";
+        '$bairro','$cidade','$estado','$email','$cpf_cnpj','$rg','$telefone','$celular',
+        '$data_nasc','$salario')";
         $result = mysqli_query($con, $query);
         if (mysqli_insert_id($con)) {
             echo "Inclusão realizada com sucesso ! !";

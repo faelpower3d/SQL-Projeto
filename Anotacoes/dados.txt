@@ -53,3 +53,22 @@ INSERT INTO forma_pagto(descricao) VALUES ('PIX');
 
 
 
+-- Produto 1
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Camiseta Polo', 50, 29.99, 'PÇ', 'N');
+
+-- Produto 2
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Calça Jeans', 30, 49.99, 'PÇ', 'N');
+
+-- Produto 3
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Tênis Esportivo', 20, 79.99, 'PÇ', 'N');
+
+-- Produto 4
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Mochila', 15, 39.99, 'PÇ', 'N');
+
+-- Produto 5
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Relógio de Pulso', 40, 99.99, 'PÇ', 'N');

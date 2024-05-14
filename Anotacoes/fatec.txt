@@ -1,2 +1,3 @@
 git config --global user.email "rafaelmoralsilva@hotmail.com" 
 git config --global user.email "faelpower3d"
+http://localhost/phpmyadmin/
