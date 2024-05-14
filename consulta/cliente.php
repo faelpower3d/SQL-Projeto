@@ -3,10 +3,12 @@
     <meta charset="UTF-8">
     <title>Clientes</title> 
     </head> 
-    <body> 
-        <form method="POST" > 
+    <body>         
         <h1> CLIENTES</h1> 
-        <table border="1" width="100%" > 
+        <a href="../inclusao/cliente.php"><button>NOVO</button></a>              
+        <a href="../index.html"><button>VOLTAR</button></a> 
+        <form method="POST"> 
+        <table border="1" width="100%"> 
         <?php 
             include ('../conexaoBanco/loja.php'); 
             $query="Select * FROM clientes order by nome"; 
@@ -29,7 +31,7 @@
                 echo "<td>".$reg['endereco']. "</td>";                 
                 echo "<td>".$reg['numero']. "</td>";                 
                 echo "<td>".$reg['bairro']. "</td>";                 
-                echo "><td>".$reg['cidade']. "</td>";                 
+                echo "<td>".$reg['cidade']. "</td>";                 
                 echo "<td>".$reg['estado']. "</td>";                 
                 echo "<td>".$reg['email']. "</td>";                 
                 echo "<td>".$reg['cpf_cnpj']. "</td>";                 
@@ -39,15 +41,13 @@
                 echo "<td>".$reg['data_nasc']. "</td>";                 
                 echo "<td>".$reg['salario']. "</td>";                 
                 echo "<td><a href='../edita/cliente.php?id=". $reg['id']."'>Editar</a></td>"; 
-                echo "<td><a href='exclui_funcao.php?id=". $reg['id']. "'>Excluir </a></td></tr>"; 
-            }        
+                echo "<td><a href='../excluir/cliente.php?id=". $reg['id']. "'>Excluir </a></td></tr>"; 
+            }  
+            
+            mysqli_close($con); 
         ?>        
         </table>        
-        </form>        
-        <?php
-            mysqli_close($con);        
-        ?>     
-        <a href="incluid_funcao.php"><button>NOVO </button></a>              
-        <a href="../index.html"><button>VOLTAR</button></a>   
+        </form>    
+                    
     </body> 
 </html>

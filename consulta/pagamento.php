@@ -4,8 +4,11 @@
     <title>Forma Pagamento</title> 
     </head> 
     <body> 
-        <form method="POST" > 
+        
         <h1> Forma Pagamento</h1> 
+        <a href="../inclusao/fPagamento.php"><button>NOVO </button></a>              
+        <a href="../index.html"><button>VOLTAR</button></a>  
+        <form method="POST"> 
         <table border="1" width="100%" > 
         <?php 
             include ('../conexaoBanco/loja.php'); 
@@ -19,14 +22,11 @@
                 echo "<td>".$reg['descricao']. "</td>";                       
                 echo "<td><a href='../edita/pagamento.php?id=". $reg['id']."'>Editar</a></td>"; 
                 echo "<td><a href='../excluir/pagamento.php?id=". $reg['id']. "'>Excluir </a></td></tr>"; 
-            }        
+            }   
+            mysqli_close($con);     
         ?>        
         </table>        
         </form>        
-        <?php
-            mysqli_close($con);        
-        ?>     
-        <a href="incluid_funcao.php"><button>NOVO </button></a>              
-        <a href="../index.html"><button>VOLTAR</button></a>   
+         
     </body> 
 </html>

@@ -4,8 +4,11 @@
     <title>PRODUTOS</title> 
     </head> 
     <body> 
-        <form method="POST" > 
+        
         <h1> PRODUTOS </h1> 
+        <a href="../inclusao/produto.php"><button>NOVO </button></a>              
+        <a href="../index.html"><button>VOLTAR</button></a>
+        <form method="POST" >  
         <table border="1" width="100%" > 
         <?php 
             include ('../conexaoBanco/loja.php'); 
@@ -20,19 +23,16 @@
             while ($reg = mysqli_fetch_array($resu)) { 
                 echo "<tr><td>".$reg['nome']. "</td>";                 
                 echo "<td>".$reg['qtde_estoque']. "</td>";                                
-                echo "><td>".$reg['preco']. "</td>";                 
+                echo "<td>".$reg['preco']. "</td>";                 
                 echo "<td>".$reg['unidade_medida']. "</td>";  
                 echo "<td>".$reg['promocao']. "</td>";                      
                 echo "<td><a href='../edita/produto.php?id=". $reg['id']."'>Editar</a></td>"; 
-                echo "<td><a href='exclui_funcao.php?id=". $reg['id']. "'>Excluir </a></td></tr>"; 
-            }        
+                echo "<td><a href='../excluir/produto.php?id=". $reg['id']. "'>Excluir </a></td></tr>"; 
+            }    
+            mysqli_close($con);    
         ?>        
         </table>        
-        </form>        
-        <?php
-            mysqli_close($con);        
-        ?>     
-        <a href="incluid_funcao.php"><button>NOVO </button></a>              
-        <a href="../index.html"><button>VOLTAR</button></a>   
+        </form>     
+         
     </body> 
 </html>

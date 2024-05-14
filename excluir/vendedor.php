@@ -2,7 +2,7 @@
 <html> 
 <head> 
 <meta charset="UTF-8"> 
-<title>Cliente</title> 
+<title>Vendedor</title> 
 </head> 
 <body> 
 <h1>Exclusão</h1> 
@@ -13,7 +13,7 @@ include('../conexaoBanco/loja.php');
 $id = $_GET['id'];
  
 
-$query = "SELECT * FROM clientes WHERE id = $id"; 
+$query = "SELECT * FROM vendedor WHERE id = $id"; 
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_assoc($result);
  
@@ -21,7 +21,7 @@ $row = mysqli_fetch_assoc($result);
 if ($row) { 
 
     echo "<p>ID:".$row['id']."</p>";    
-    echo "<p>Cliente: " .$row['nome']."</p>";     
+    echo "<p>Vendedor (a): " .$row['nome']."</p>";     
     echo "<p>Confirma a exclusão?</p>"; 
     echo "<form method='POST'>"; 
     echo "<input type='hidden' name='id' value='" .$row['id'] . "'>";
@@ -29,12 +29,12 @@ if ($row) {
     echo "<input type='submit' name='cancelar' value='Não'>"; 
     echo "</form>"; 
     }else {
-        echo "Cliente não encontrada."; 
+        echo "Vendedor não encontrada."; 
     } 
  
     mysqli_close($con);
     }else {
-        echo "Cliente não especificado."; 
+        echo "Vendedor não especificado."; 
     }
 ?>
  
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['confirmar'])) {
 
     $id = $_POST["id"]; 
 
-$query = "DELETE FROM clientes WHERE id = $id"; 
+$query = "DELETE FROM vendedor WHERE id = $id"; 
 
 
 $result = mysqli_query($con, $query);
@@ -55,11 +55,11 @@ $result = mysqli_query($con, $query);
 
     mysqli_close($con);
      
-    header("Location: ../consulta/cliente.php");
+    header("Location: ../consulta/vendedor.php");
      
     } elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancelar'])) {     
     
-        header("Location: ../consulta/cliente.php");
+        header("Location: ../consulta/vendedor.php");
         exit;     
     }     
     ?>

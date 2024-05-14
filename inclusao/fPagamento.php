@@ -27,7 +27,7 @@
         </select>
         <p><input type="submit" value="Enviar"> <input type="reset" value="Limpar">
     </form>
-    <a href="../index.html"><button>Voltar</button></a>     
+    <a href="../consulta/pagamento.php"><button>Voltar</button></a>     
            
 
     

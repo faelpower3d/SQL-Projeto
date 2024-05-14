@@ -6,7 +6,7 @@
 <body>
     <p><h1>PRODUTO - CADASTRO</h1>
     <?php
-    //Verifica se o Formulario foi submetido
+
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         include ("../conexaoBanco/loja.php");
         $nome = $_POST["nome"];        
@@ -47,7 +47,7 @@
         </select>
         <p><input type="submit" value="Enviar"> <input type="reset" value="Limpar">
     </form>
-    <a href="../index.html"><button>Voltar</button></a>     
+    <a href="../consulta/produto.php"><button>Voltar</button></a>     
            
 
     
