@@ -5,7 +5,7 @@
     </head> 
     <body> 
         <form method="POST" > 
-        <p><center><h1> VENDEDORES </center></h1> 
+        <h1> VENDEDORES</h1> 
         <table border="1" width="100%" > 
         <?php 
             include ('../conexaoBanco/loja.php'); 
@@ -27,7 +27,7 @@
                 echo "<td>".$reg['celular']. "</td>";                
                 echo "<td>".$reg['email']. "</td>";        
                 echo "<td>".$reg['perc_comissao']. "</td>";        
-                echo "<td><a href='edit_funcao.php?id=". $reg['id']."'>Editar</a></td>"; 
+                echo "<td><a href='../edita/vendedor.php?id=". $reg['id']."'>Editar</a></td>"; 
                 echo "<td><a href='exclui_funcao.php?id=". $reg['id']. "'>Excluir </a></td></tr>"; 
             }        
         ?>        

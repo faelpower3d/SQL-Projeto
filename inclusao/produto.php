@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">   
-    <title>INCLUSÃO-Cliente</title>
+    <title>INCLUSÃO-Produto</title>
 </head>
 <body>
-    <p><h1>CLIENTE - CADASTRO</h1>
+    <p><h1>PRODUTO - CADASTRO</h1>
     <?php
     //Verifica se o Formulario foi submetido
     if ($_SERVER["REQUEST_METHOD"] == "POST"){

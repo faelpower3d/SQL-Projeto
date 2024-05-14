@@ -2,7 +2,7 @@
 session_start();
 include_once("../conexaoBanco/loja.php");
     $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT); 
-    $result = "SELECT * FROM clientes WHERE id = '$id'";  
+    $result = "SELECT * FROM vendedor WHERE id = '$id'";  
     $resultado = mysqli_query($con, $result); 
     $row = mysqli_fetch_assoc($resultado); 
 
@@ -10,32 +10,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST["id"];
     $nome = $_POST["nome"];
     $endereco = $_POST["endereco"];
-    $numero = $_POST["numero"];        
-    $bairro = $_POST["bairro"];
     $cidade = $_POST["cidade"];
     $estado = $_POST["estado"];
-    $email = $_POST["email"];
-    $cpf_cnpj = $_POST["cpf_cnpj"];
-    $rg = $_POST["rg"];
-    $telefone = $_POST["telefone"];
     $celular = $_POST["celular"];
-    $data_nasc = $_POST["data_nasc"];        
-    $salario = $_POST["salario"];
+    $email = $_POST["email"];
+    $perc_comissao = $_POST["perc_comissao"];  
 
-    $result= "UPDATE clientes SET nome='$nome', endereco='$endereco', numero='$numero',
-    bairro='$bairro', cidade='$cidade', estado='$estado', cpf_cnpj='$cpf_cnpj',
-    rg='$rg', telefone='$telefone', celular='$celular', email='$email',
-    data_nasc='$data_nasc', salario='$salario' WHERE id='$id'";
+    $result= "UPDATE vendedor SET nome='$nome', endereco='$endereco', cidade='$cidade', 
+    estado='$estado', celular='$celular', email='$email', perc_comissao='$perc_comissao' WHERE id='$id'";
 
     $resultado= mysqli_query($con, $result) or die (mysqli_connect_error());
 
     if (mysqli_affected_rows($con)) {
         $_SESSION['msg'] = "<p style='color:green;'>Cliente alterado com sucesso</p>";
-        header("Location: cliente.php?id=$id"); 
+        header("Location: vendedor.php?id=$id"); 
         exit();
     } else {
         $_SESSION['msg'] = "<p style='color:red;'>Cliente não foi alterado, verifique</p>";
-        header("Location: cliente.php?id=$id"); 
+        header("Location: vendedor.php?id=$id"); 
         exit();
     } 
 }
@@ -46,10 +38,10 @@ mysqli_close($con);
 <html lang="pt-br"> 
 <head> 
 <meta charset="utf-8"> 
-<title>Editar Cliente</title> 
+<title>Editar Vendedor</title> 
 </head> 
 <body> 
-<h1>Editar Cliente</h1> 
+<h1>Editar Vendedor</h1> 
 
 <?php 
     if (isset($_SESSION['msg'])) {
@@ -68,10 +60,6 @@ mysqli_close($con);
 <table width="80%"> 
 <tr> 
 <td> Endereço: </td><td><input type="text" name="endereco" size="100" value="<?php echo $row['endereco'];?>"></td>
-<td> Número: </td><td><input type="number" name="numero" value="<?php echo $row['numero'];?>"></td>
-</tr> 
-<tr> 
-<td> Bairro: </td><td><input type="text" name="bairro" value="<?php echo $row['bairro'];?>"></td> 
 
 <td> Cidade: </td><td><input type="text" name="cidade" value="<?php echo $row['cidade'];?>"></td> 
 
@@ -89,23 +77,17 @@ mysqli_close($con);
 </table> 
 </fieldset> 
 
-<label> e-mail: </label><input type="email" name="email" value="<?php echo $row['email']; ?>">
-
-<label> CPF/CNPJ: </label><input type="text" name="cpf_cnpj" size="30" value="<?php echo $row['cpf_cnpj']; ?>">
-
-<label> RG: </label><input type="text" name="rg" size="30" value="<?php echo $row['rg']; ?>">
-
-<label> telefone: </label><input type="number" name="telefone" size="30" value="<?php echo $row['telefone']; ?>">
-
 <label> Celular: </label> <input type="number" name="celular" size="30" value="<?php echo $row['celular']; ?>">
 
-<label>Data de nascimento</label>  <input type="date" name="data_nasc" value="<?php echo $row['data_nasc'];?>">    
+<label> e-mail: </label><input type="email" name="email" value="<?php echo $row['email']; ?>">
 
-<label> Salario</label>    <input type="number" min="0" max="50000" name="salario" value="<?php echo $row['salario'];?>">   
+<label> Percentual de comissão : </label><input type="text" name="perc_comissao" size="30" value="<?php echo $row['perc_comissao']; ?>">
+
+ 
 
 <p><input type="submit" value="Salvar">
 </form>
 
-<p><a href="../consulta/cliente.php"><button>Voltar</button></a>
+<p><a href="../consulta/vendedor.php"><button>Voltar</button></a>
 </body> 
 </html>
