@@ -8,7 +8,7 @@
     <?php
     //Verifica se o Formulario foi submetido
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        include ("clinica.php");
+        include ("../conexaoBanco/loja.php");
         $nome = $_POST["nome"];
         $endereco = $_POST["endereco"];
         $numero = $_POST["numero"];        
@@ -59,31 +59,18 @@
         <label> RG :</label>
         <input type="text" size="9" maxlength="9" name="rg" required>             
         <label> Telefone: </label>
-        <input type="tel" maxlength="15" name="telefone" placeholder="(XX)XXXX-XXXX" required>
+        <input type="tel" maxlength="14" name="telefone" placeholder="(XX)XXXX-XXXX" required>
         <label> Celular: </label>
-        <input type="tel" maxlength="15" name="celular" placeholder="(XX)XXXXX-XXXX" required>  
+        <input type="tel" maxlength="14" name="celular" placeholder="(XX)XXXXX-XXXX" required>  
         <label>Data de nascimento</label>      
         <input type="date" name="data_nasc" required>
         <label> Salario</label>
-        <input type="number" min="0" max="50000" name="salario" required>        
-        <?php
-        include ("clinica.php");
-        $query = 'SELECT * FROM ao ORDER BY descricao;';
-        $resu = mysqli_query($con, $query) or die (mysqli_connect_error());
-        while ($reg = mysqli_fetch_array($resu)) {
-        ?>
-         <option value="<?php echo $reg ['id'];?>"> <?php echo $reg ['descricao'];?>
-        </option>         
-        <?php
-        }
-        mysqli_close($con);
-        ?>
-
+        <input type="number" min="0" max="50000" name="salario" required>         
         </select>
         <p><input type="submit" value="Enviar"> <input type="reset" value="Limpar">
     </form>
-    <a href="enf.php"><button>Voltar</button></a>     
-        
+    <a href="../index.html"><button>Voltar</button></a>     
+           
 
     
 </body>
