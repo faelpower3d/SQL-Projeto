@@ -44,7 +44,7 @@ CREATE TABLE pedidos(
 id INTEGER AUTO_INCREMENT PRIMARY KEY,
 data DATE NOT NULL,
 id_cliente INTEGER REFERENCES clientes(id) ,
-observacao VARCHAR (100) NOT NULL,
+observacao VARCHAR (100) ,
 forma_pagto INTEGER REFERENCES forma_pagto(id) ,
 prazo_entrega VARCHAR (20) NOT NULL,
 id_vendedor INTEGER REFERENCES vendedor(id)

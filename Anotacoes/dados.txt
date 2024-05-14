@@ -59,7 +59,7 @@ VALUES ('Camiseta Polo', 50, 29.99, 'PÇ', 'N');
 
 -- Produto 2
 INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
-VALUES ('Calça Jeans', 30, 49.99, 'PÇ', 'N');
+VALUES ('Calça Jeans', 30, 49.99, 'PÇ', 'S');
 
 -- Produto 3
 INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
