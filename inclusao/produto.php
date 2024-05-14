@@ -10,12 +10,12 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         include ("../conexaoBanco/loja.php");
         $nome = $_POST["nome"];        
-        $qtde_estoque = $_POST["qtde_estoq"];
+        $qtde_estoque = $_POST["qtde_estoque"];
         $preco = $_POST["preco"];
         $unidade_medida = $_POST["unidade_medida"];
         $promocao = $_POST["promocao"];       
         
-        $query = "INSERT INTO  clientes(nome,qtde_estoque,preco,unidade_medida,promocao)
+        $query = "INSERT INTO  produto(nome,qtde_estoque,preco,unidade_medida,promocao)
         VALUES ('$nome','$qtde_estoque','$preco','$unidade_medida','$promocao')";
         $result = mysqli_query($con, $query);
         if (mysqli_insert_id($con)) {
@@ -30,13 +30,18 @@
     <label> Nome: </label>
         <input type="text" size="80" maxlength="100" name="nome" required>        
     <label> quantidade no estoque: </label>
-        <input type="text" size="80" maxlength="100" name="nome" required>        
+        <input type="number"  name="qtde_estoque" required>        
     <label> Preço: </label>
-        <input type="text" size="80" maxlength="100" name="nome" required>        
-    <label> Unidade de Medida: </label>
-        <input type="text" size="80" maxlength="100" name="nome" required>       
-    
-    <select name="Promoção">
+        <input type="number" name="preco" required> 
+    <label> Unidade de medida</label>         
+    <select name="unidade_medida">
+            <option value="PÇ">PÇ</option> 
+            <option value="KG">KG</option>            
+            <option value="L">L</option>               
+            <option value="M">M</option>                  
+        </select>    
+        <label>Promção</label>
+    <select name="promocao">
             <option value="S">S</option>            
             <option value="N">N</option> </select>                
         </select>

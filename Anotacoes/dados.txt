@@ -18,7 +18,7 @@ VALUES ('Carlos Silva', 'Alameda dos Pinheiros', '222', 'Jardim América', 'São
 INSERT INTO clientes(nome, endereco, numero, bairro, cidade, estado, email, cpf_cnpj, rg, telefone, celular, data_nasc, salario)
 VALUES ('Mariana Costa', 'Rua dos Lírios', '333', 'Floresta', 'Salvador', 'BA', 'mariana@email.com', '567.890.123-44', '5432109-5', '(71) 4567-8901', '(71) 1234-5678', '1987-07-20', 5200.00);
 
--------------------------------------------------------------------------------------
+
 
 -- Vendedor 1
 INSERT INTO vendedor(nome, endereco, cidade, estado, celular, email, perc_comissao)
@@ -40,7 +40,7 @@ VALUES ('Mariana Costa', 'Travessa das Oliveiras', 'Porto Alegre', 'RS', '(51) 6
 INSERT INTO vendedor(nome, endereco, cidade, estado, celular, email, perc_comissao)
 VALUES ('Ana Pereira', 'Alameda das Azaleias', 'Salvador', 'BA', '(71) 5432-1098', 'ana@email.com', 11.5);
 
---------------------------------------------------------------------------------------------
+
 
 
 INSERT INTO forma_pagto(descricao) VALUES ('Cartão de Crédito');
