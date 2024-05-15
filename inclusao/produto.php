@@ -31,7 +31,7 @@
     <label> quantidade no estoque: </label>
         <input type="number"  name="qtde_estoque" required>        
     <label> Preço: </label>
-        <input type="number" name="preco" required> 
+        <input type="text" name="preco" step="0.01" maxlength="8" required> 
     <label> Unidade de medida</label>         
     <select name="unidade_medida">
             <option value="PÇ">PÇ</option> 

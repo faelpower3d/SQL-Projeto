@@ -44,7 +44,7 @@ mysqli_close($con);
 ?> 
  
 <form method="POST">     
-<input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+<?php echo $row['id']; ?>">
 
     <p><label>Descrição: </label>
     <input type="text" name="descricao" size="100" value="<?php echo $row['descricao']; ?>">     
