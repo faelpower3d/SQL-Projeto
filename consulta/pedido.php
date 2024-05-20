@@ -48,6 +48,6 @@
         ?>        
         </table>        
         </form>    
-                    
+        <script src="/script/main.js" defer></script>      
     </body> 
 </html>
