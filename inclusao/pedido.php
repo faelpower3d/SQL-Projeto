@@ -14,10 +14,7 @@
         $observacao = $_POST["observacao"];        
         $forma_pagto = $_POST["forma_pagto"];
         $prazo_entrega = $_POST["prazo_entrega"];
-        $id_vendedor = $_POST["id_vendedor"];
-
-        
-        
+        $id_vendedor = $_POST["id_vendedor"];        
         $id_produto = $_POST["id_produto"];
         $qtd = $_POST["qtd"];
         
@@ -107,11 +104,7 @@
         mysqli_close($con);
         ?>
         </select>  
-
-        
-
-
-        <label> prazo de prazo_entrega: </label>
+        <label> prazo de entrega: </label>
         <input type="date" maxlength="10" name="prazo_entrega" required>          
         
         </select>
