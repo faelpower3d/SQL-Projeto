@@ -1,13 +1,21 @@
-SELECT 
-p.id,
-p.data,
-p.id_cliente as clientes,
-p.observacao,
-p.forma_pagto,
-p.prazo_entrega,
-p.id_vendedor
-FROM pedidos p
-JOIN
-
-
-WHERE 1
+CREATE VIEW ver_pedidos AS SELECT
+ped.id,
+ped.data,
+c.nome as clientes,
+prod.nome as produto,
+it.qtde as quantidade,
+f.descricao as forma_pagamento,
+ped.prazo_entrega,
+v.nome as vendedor,
+ped.observacao
+FROM pedidos ped
+JOIN 
+    clientes c ON ped.id_cliente = c.id
+JOIN 
+    itens_pedido it ON ped.id = it.id_pedido
+JOIN 
+    produto prod ON it.id_produto = prod.id
+JOIN 
+    forma_pagto f ON ped.forma_pagto = f.id
+JOIN 
+    vendedor v ON ped.id_vendedor = v.id;
