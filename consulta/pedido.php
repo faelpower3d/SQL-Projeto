@@ -47,7 +47,6 @@
             mysqli_close($con); 
         ?>        
         </table>        
-        </form>    
-        <script src="/script/main.js" defer></script>      
+        </form>   
     </body> 
 </html>

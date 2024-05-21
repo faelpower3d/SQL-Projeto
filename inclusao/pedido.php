@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">   
     <title>Pedido</title>
+    <script src="../script/main.js" defer></script> 
 </head>
 <body>
     <p><h1>PEDIDO</h1>
@@ -16,13 +17,15 @@
         $prazo_entrega = $_POST["prazo_entrega"];
         $id_vendedor = $_POST["id_vendedor"];        
         $id_produto = $_POST["id_produto"];
-        $qtd = $_POST["qtd"];
+        $qtde = $_POST["qtde"];
+
         $query = "INSERT INTO pedidos (data, id_cliente, observacao, forma_pagto, prazo_entrega, id_vendedor) 
         VALUES ('$data', '$id_cliente', '$observacao', '$forma_pagto', '$prazo_entrega', '$id_vendedor');";
         $result = mysqli_query($con, $query);
         $id=mysqli_insert_id($con);
+
         $query1="INSERT INTO itens_pedido ( id_pedido,id_produto, qtde)
-        VALUES ('$id','$id_produto', '$qtd')";
+        VALUES ('$id','$id_produto', '$qtde')";
         $result1 = mysqli_query($con, $query1);
         if (mysqli_insert_id($con)) {
             echo "Inclusão realizada com sucesso ! !";
@@ -49,42 +52,40 @@
         <?php
         }
         mysqli_close($con);
-        ?></select>
-
-        <fieldset><legend> Itens <button type="button" onclick="addIten()">+</button> </legend> 
-        <table width="80%"> 
-        <div id="itens">
-        <tr> 
-        <td><label> Produto: </label> 
-        <select name="id_produto">
-        <?php
-        include ("../conexaoBanco/loja.php");
-        $query = 'SELECT * FROM produto ORDER BY nome;';
-        $resu = mysqli_query($con, $query) or die (mysqli_connect_error());
-        while ($reg = mysqli_fetch_array($resu)) {
         ?>
-        
-         <option value="<?php echo $reg ['id'];?>"> <?php echo $reg ['nome'];?>
-        </option>         
-        <?php
-        }
-        mysqli_close($con);
-        ?></select>
-        </td>
-        <td><label> Quantidade: </label> 
-               <input type="number" size="80" maxlength="100" name="qtd" required>               
-        </select>  
-        </td>
-        </tr>
-        </div> 
-        
-        </table> 
-        </fieldset> 
-       
+        </select>
+        <fieldset><legend> Itens <button type="button" onclick="addItens()">+</button></legend> 
+            <table width="80%" id="itensTable">        
+                <tr> 
+                    <td>
+                        <label> Produto: </label> 
+                        <select name="id_produto" id="prod">
+                            <?php
+                            include ("../conexaoBanco/loja.php");
+                            $query = 'SELECT * FROM produto ORDER BY nome;';
+                            $resu = mysqli_query($con, $query) or die (mysqli_connect_error());
+                            while ($reg = mysqli_fetch_array($resu)) {
+                            ?>        
+                            <option value="<?php echo $reg ['id'];?>"> <?php echo $reg ['nome'];?>
+                            </option>         
+                            <?php
+                            }
+                            mysqli_close($con);
+                            ?>
+                        </select>
+                    </td>
+                        <td>
+                            <div id="itens">
+                                <label> Quantidade: </label> 
+                                <input type="number" size="80" maxlength="100" name="qtde"> 
+                            </div>      
+                        </td>
+                </tr>       
+            </table> 
+        </fieldset>        
        
         </select>      
-        <br><label> Observação: </label>
-        <input type="text" size="80" maxlength="100" name="observacao" required>
+        <br>        
         <label>Forma de pagamento</label>
         <select name="forma_pagto" >
         <?php
@@ -117,10 +118,12 @@
         <?php
         }
         mysqli_close($con);
-        ?>       
+        ?>   
+        <label> Observação: </label>
+        <input type="text" size="80" maxlength="100" name="observacao" required>    
         <br><input type="submit" value="Enviar"> <input type="reset" value="Limpar">
     </form>
     <a href="../index.html"><button>Voltar</button></a>  
+    
 </body>
-<script></script>
 </html>

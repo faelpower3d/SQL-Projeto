@@ -1,0 +1,13 @@
+SELECT 
+p.id,
+p.data,
+p.id_cliente as clientes,
+p.observacao,
+p.forma_pagto,
+p.prazo_entrega,
+p.id_vendedor
+FROM pedidos p
+JOIN
+
+
+WHERE 1
