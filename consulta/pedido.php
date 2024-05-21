@@ -5,7 +5,7 @@
     </head> 
     <body>         
         <h1>PEDIDOS</h1> 
-        <a href="../inclusao/produto.php"><button>NOVO</button></a>              
+        <a href="../inclusao/pedido.php"><button>NOVO</button></a>              
         <a href="../index.html"><button>VOLTAR</button></a> 
         <form method="POST"> 
         <table border="1" width="100%"> 
