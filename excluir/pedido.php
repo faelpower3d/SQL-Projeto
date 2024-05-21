@@ -18,24 +18,25 @@ $result = mysqli_query($con, $query);
 $row = mysqli_fetch_assoc($result);
  
 
-if ($row) { 
-
+if ($row) {
     echo "<p>Confirma a exclusão?</p>";
     echo "<p>ID:".$row['id']."</p>";        
     echo "<p>Vendedor: " .$row['vendedor']."</p>"; 
     echo "<p>Cliente: " .$row['clientes']."</p>";     
+    echo "<p>Item: " .$row['produto']."</p>";     
     echo "<form method='POST'>"; 
     echo "<input type='hidden' name='id' value='" .$row['id'] . "'>";
-    echo "<input type='submit' name='confirmar' value='Sim'>"; 
-    echo "<input type='submit' name='cancelar' value='Não'>"; 
+    echo "<input type='submit' name='confirmar' value='Excluir Tudo'>"; 
+    echo "<input type='submit' name='confItem' value='Excluir apenas o item ".$row['produto']." desse pedido'>"; 
+    echo "<input type='submit' name='cancelar' value='Não exlcuir nada'>"; 
     echo "</form>"; 
     }else {
-        echo "Forma de pagamento não encontrada."; 
+        echo "id não encontrado."; 
     } 
  
     mysqli_close($con);
     }else {
-        echo "ID da Forma de pagamento não especificado."; 
+        echo "ID não especificado."; 
     }
 ?>
  

@@ -43,13 +43,11 @@ mysqli_close($con);
     }  
 ?> 
  
-<form method="POST">     
-<?php echo $row['id']; ?>">
-
+<form method="POST">
+    <input type="hidden" name="id" value="<?php echo $row['id'];?>">
     <p><label>Descrição: </label>
-    <input type="text" name="descricao" size="100" value="<?php echo $row['descricao']; ?>">     
-
-<p><input type="submit" value="Salvar">
+    <input type="text" name="descricao" size="100" value="<?php echo $row['descricao']; ?>">
+    <p><input type="submit" value="Salvar">
 </form>
 
 <p><a href="../consulta/pagamento.php"><button>Voltar</button></a>
