@@ -46,7 +46,7 @@
         <label> e-mail: </label>
         <input type="email" size="40" maxlength="80" name="email" required>  
         <label>percentual de comissao</label>
-        <input type="number" size="40" maxlength="80" name="perc_comissao" required>               
+        <input type="text" size="40" maxlength="80" name="perc_comissao" required>               
         </select>
         <p><input type="submit" value="Enviar"> <input type="reset" value="Limpar">
     </form>

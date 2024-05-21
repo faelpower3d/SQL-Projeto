@@ -29,9 +29,8 @@
                 echo "<td>".$reg['forma_pagamento']. "</td>";                 
                 echo "<td>".$reg['prazo_entrega']. "</td>";                 
                 echo "<td>".$reg['vendedor']. "</td>";
-                echo "<td>".$reg['observacao']. "</td>";  
-                echo "<td><a href='../edita/cliente.php?id=". $reg['id']."'>Detalhes</a></td>"; 
-                echo "<td><a href='../excluir/cliente.php?id=". $reg['id']. "'>Excluir </a></td></tr>";
+                echo "<td>".$reg['observacao']. "</td>";                
+                echo "<td><a href='../excluir/pedido.php?id=". $reg['id']. "'>Excluir </a></td></tr>";
 
             }   
             
