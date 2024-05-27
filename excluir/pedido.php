@@ -43,23 +43,34 @@ if ($row) {
 <?php
  
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['confirmar'])) { 
-    include('../conexaoBanco/loja.php');
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['confirmar'])) { 
+        include('../conexaoBanco/loja.php');
+        $id = $_POST["id"];
 
+        $query = "DELETE FROM produto WHERE id = $id"; 
+        $result = mysqli_query($con, $query);
+        $query1 = "DELETE FROM itens_pedido WHERE id_pedido = $id";
+        $result2 = mysqli_query($con, $query1);
+        mysqli_close($con);
 
-    $id = $_POST["id"]; 
-
-$query = "DELETE FROM produto WHERE id = $id"; 
-$result = mysqli_query($con, $query);
-$query1 = "DELETE FROM itens_pedido WHERE id_pedido = $id";
-$result2 = mysqli_query($con, $query1);
-
-
-    mysqli_close($con);
+        header("Location: ../consulta/pedido.php");
      
-    header("Location: ../consulta/pedido.php");
-     
-    } elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancelar'])) {     
+    } elseif    ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['confItem'])) { 
+                include('../conexaoBanco/loja.php');
+                $produto = $row["produto"];
+
+                $query3 = "DELETE FROM itens_pedido
+                
+                WHERE id_produto = 2 AND id_pedido = $id";
+                $result3 = mysqli_query($con, $query3);
+
+                mysqli_close($con);
+                
+                header("Location: ../consulta/pedido.php");
+            
+    } elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cancelar'])) {    
+        
+ 
     
         header("Location: ../consulta/pedido.php");
         exit;     
