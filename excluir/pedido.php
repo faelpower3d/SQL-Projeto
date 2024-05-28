@@ -16,6 +16,9 @@ $id = $_GET['id'];
 $query = "SELECT * FROM ver_pedidos WHERE id = $id"; 
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_assoc($result);
+$query3 = "SELECT * FROM itens_pedido WHERE id_pedido = $id"; 
+$result3 = mysqli_query($con, $query3);
+$row3 = mysqli_fetch_assoc($result3);
  
 
 if ($row) {
@@ -58,10 +61,8 @@ if ($row) {
     } elseif    ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['confItem'])) { 
                 include('../conexaoBanco/loja.php');
                 $produto = $row["produto"];
-
-                $query3 = "DELETE FROM itens_pedido
-                
-                WHERE id_produto = 2 AND id_pedido = $id";
+                $id_item = $row3["id_item"];
+                $query3 = "DELETE FROM itens_pedido WHERE id_item = $id_item AND id_pedido = $id";
                 $result3 = mysqli_query($con, $query3);
 
                 mysqli_close($con);
