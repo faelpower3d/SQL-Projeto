@@ -1,6 +1,5 @@
 CREATE VIEW ver_pedidos AS SELECT
 ped.id,
-it.id_produto,
 ped.data,
 c.nome as clientes,
 prod.nome as produto,
@@ -14,8 +13,6 @@ JOIN
     clientes c ON ped.id_cliente = c.id
 JOIN 
     itens_pedido it ON ped.id = it.id_pedido
-JOIN
-    itens_pedido it ON ped.id = it.id_produto
 JOIN 
     produto prod ON it.id_produto = prod.id
 JOIN 
@@ -23,11 +20,4 @@ JOIN
 JOIN 
     vendedor v ON ped.id_vendedor = v.id;
 
-CREATE VIEW del_item AS SELECT 
-ip.id_item,
-ip.id_pedido,	
-p.nome as produto,	
-ip.qtde	 
-FROM itens_pedido ip
-JOIN
-	produto p ON ip.id_item = p.id;
+

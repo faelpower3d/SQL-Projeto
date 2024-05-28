@@ -6,7 +6,13 @@
     <body>         
         <h1> CLIENTES</h1> 
         <a href="../inclusao/cliente.php"><button>NOVO</button></a>              
-        <a href="../index.html"><button>VOLTAR</button></a> 
+        <a href="../index.html"><button>VOLTAR</button></a>
+        <form action="../filtros/cliente.php" method="POST">
+        <label> Filtro = </label>
+        <input type="text" size="80" maxlength="100" name="data" placeholder="NOME OU CIDADE" required>        
+        <input type="submit" name="enviar" value="FILTRAR">
+        <input type="reset" name="limpar" value="LIMPAR">
+        </form>
         <form method="POST"> 
         <table border="1" width="100%"> 
         <?php 
@@ -25,7 +31,7 @@
             echo "<td><b> TELEFONE</td>";
             echo "<td><b> CELULAR</td>";
             echo "<td><b> DATA DE NASCIMENTO</td>";
-            echo "<td><b> SALARIO</td>";
+            echo "<td><b> SALARIO</td></tr>";
             while ($reg = mysqli_fetch_array($resu)) { 
                 echo "<tr><td>".$reg['nome']. "</td>";                 
                 echo "<td>".$reg['endereco']. "</td>";                 
