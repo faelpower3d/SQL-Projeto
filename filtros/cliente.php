@@ -1,8 +1,3 @@
-<?php
-    include("../conexaoBanco/loja.php");
-    $pesq_1 = $_POST['nome'];
-    
-?> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,63 +5,69 @@
     <title>Resultado da pesquisa</title>
 </head>
 <body>
-    <h2><p align="center">CONSULTA DE PACIENTES</h2>
+<form method="POST">              
     <table border="1" width="100%">
-        <?php
-            include ('../conexaoBanco/loja.php'); 
-            $query="Select * FROM clientes order by nome"; 
-            $resu=mysqli_query($con, $query) or die (mysqli_connect_error()); 
-            echo "<tr><td><b> NOME";
-            echo "<td><b> ENDEREÇO</td>";
-            echo "<td><b> N°</td>";
-            echo "<td><b> BAIRRO</td>";
-            echo "<td><b> CIDADE</td>";
-            echo "<td><b> ESTADO</td>";
-            echo "<td><b> EMAIL</td>";
-            echo "<td><b> CPF/CNPJ</td>";
-            echo "<td><b> RG</td>";
-            echo "<td><b> TELEFONE</td>";
-            echo "<td><b> CELULAR</td>";
-            echo "<td><b> DATA DE NASCIMENTO</td>";
-            echo "<td><b> SALARIO</td></tr>";
-            if (empty($pesq_1)) {
-                $sql = "SELECT * FROM cliente ORDER BY nome";
-            } elseif (!empty($pesq_1)) {
-                $sql = "SELECT * FROM paciente WHERE nome LIKE '%$pesq_1%' OR cidade LIKE '%$pesq_1%' ORDER BY nome";
-            } elseif (empty($pesq_1) && (!empty($pesq_2))) {
-                $sql = "SELECT * FROM paciente WHERE cpf = '$pesq_2' ORDER BY nome";
-            } else {
-                $sql = "SELECT * FROM paciente WHERE nome like '%$pesq_1%' or cpf = '$pesq_2' ORDER BY nome";
+    <tr>
+            <th>NOME</th>
+            <th>ENDEREÇO</th>
+            <th>N°</th>
+            <th>BAIRRO</th>
+            <th>CIDADE</th>
+            <th>ESTADO</th>             
+            <th>E-MAIL</th>
+            <th>CPF/CNPJ</th>
+            <th>RG</th>
+            <th>TELEFONE</th>
+            <th>CELULAR</th>
+            <th>DATA DE NASCIMENTO</th>
+            <th>SALARIO</th>
+        </tr>        
+        <?php    
+        include('../conexaoBanco/loja.php');
+        $pesq = isset($_POST['filt']) ? $_POST['filt'] : '';       
+            if (empty($pesq)) {
+                $sql = "SELECT * FROM clientes ORDER BY nome";
+            } else{
+                $sql = "SELECT * FROM clientes WHERE nome LIKE '%$pesq%' OR cidade LIKE '%$pesq%' ORDER BY nome";
             }
             $resultado = mysqli_query($con, $sql) or die("Erro ao retornar dados");
  
         // Obtendo os dados por meio de um loop while
         while ($registro = mysqli_fetch_array($resultado)) {
             $nome = $registro['nome'];
-            $cpf = $registro['cpf'];
-            $rg = $registro['rg'];
             $endereco = $registro['endereco'];
             $numero = $registro['numero'];
+            $bairro = $registro['bairro'];            
             $cidade = $registro['cidade'];
-            $estado = $registro['estado'];
-            $bairro = $registro['bairro'];
+            $estado = $registro['estado'];            
             $email = $registro['email'];
+            $cpf_cnpj = $registro['cpf_cnpj'];
+            $rg = $registro['rg'];
+            $telefone = $registro['telefone'];
+            $celular = $registro['celular'];
+            $data_nasc = $registro['data_nasc'];
+            $salario = $registro['salario'];
  
             echo "<tr>";
             echo "<td>".$nome."</td>";
-            echo "<td>".$cpf."</td>";
-            echo "<td>".$rg."</td>";
             echo "<td>".$endereco."</td>";
             echo "<td>".$numero."</td>";
             echo "<td>".$bairro."</td>";
             echo "<td>".$cidade."</td>";
             echo "<td>".$estado."</td>";
             echo "<td>".$email."</td>";
+            echo "<td>".$cpf_cnpj."</td>";
+            echo "<td>".$rg."</td>";            
+            echo "<td>".$telefone."</td>";
+            echo "<td>".$celular."</td>";
+            echo "<td>".$data_nasc."</td>";
+            echo "<td>".$salario."</td>";
             echo "</tr>";
         }
         mysqli_close($con);
-        echo "</table>";
+        
         ?>
-        <br><a href="consulta_paciente.php">Voltar</a><br>
+        </table>
+        <a href="../consulta/cliente.php">VOLTAR</a>
     </body>
 </html>
