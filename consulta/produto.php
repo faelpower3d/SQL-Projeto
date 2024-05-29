@@ -8,28 +8,49 @@
         <h1> PRODUTOS </h1> 
         <a href="../inclusao/produto.php"><button>NOVO </button></a>              
         <a href="../index.html"><button>VOLTAR</button></a>
+        <form method="POST">
+        <label> Filtro = </label>
+        <input type="text" size="80" maxlength="100" name="filt" placeholder="NOME DO PRODUTO"  >        
+        <input type="submit" name="enviar" value="FILTRAR">
+        <input type="reset" name="limpar" value="LIMPAR">
+        </form>
         <form method="POST" >  
         <table border="1" width="100%" > 
+        <tr>
+            <th>NOME</th>
+            <th>TD ESTOQUE</th>
+            <th>PRECO</th>
+            <th>UNID. MEDIDA</th>
+            <th>PROMOÇÃO</th>
+        </tr>
         <?php 
-            include ('../conexaoBanco/loja.php'); 
-            $query="Select * FROM produto order by nome"; 
-            $resu=mysqli_query($con, $query) or die (mysqli_connect_error()); 
-            echo "<tr><td><b> NOME";
-            echo "<td><b> QTD ESTOQUE</td>";            
-            echo "<td><b> PRECO</td>";
-            echo "<td><b> UNID. MEDIDA</td>";
-            echo "<td><b> PROMOÇÃO</td>";                  
+        include ('../conexaoBanco/loja.php'); 
+        $pesq = isset($_POST['filt']) ? $_POST['filt'] : '';       
+                if (empty($pesq)) {
+                    $sql = "SELECT * FROM produto ORDER BY nome";
+                } else{
+                    $sql = "SELECT * FROM produto WHERE nome LIKE '%$pesq%'";
+                }
+                $resu = mysqli_query($con, $sql) or die("Erro ao retornar dados");                            
 
-            while ($reg = mysqli_fetch_array($resu)) { 
-                echo "<tr><td>".$reg['nome']. "</td>";                 
-                echo "<td>".$reg['qtde_estoque']. "</td>";                                
-                echo "<td>".$reg['preco']. "</td>";                 
-                echo "<td>".$reg['unidade_medida']. "</td>";  
-                echo "<td>".$reg['promocao']. "</td>";                      
+            while ($reg = mysqli_fetch_array($resu)) {
+                $nome = $reg["nome"];
+                $qtde_estoque = $reg["qtde_estoque"];
+                $preco = $reg["preco"];
+                $unidade_medida = $reg["unidade_medida"];
+                $promocao = $reg["promocao"];
+
+            
+                echo "<tr>";
+                echo "<td>".$nome."</td>";
+                echo "<td>".$qtde_estoque."</td>";
+                echo "<td>".$unidade_medida."</td>";
+                echo "<td>".$promocao."</td>";
+                
                 echo "<td><a href='../edita/produto.php?id=". $reg['id']."'>Editar</a></td>"; 
-                echo "<td><a href='../excluir/produto.php?id=". $reg['id']. "'>Excluir </a></td></tr>"; 
-            }    
-            mysqli_close($con);    
+                echo "<td><a href='../excluir/produto.php?id=". $reg['id']. "'>Excluir </a></td></tr>";
+                }    
+                mysqli_close($con);    
         ?>        
         </table>        
         </form>     

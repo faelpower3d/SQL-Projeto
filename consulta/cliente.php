@@ -39,8 +39,7 @@
                 $sql = "SELECT * FROM clientes WHERE nome LIKE '%$pesq%' OR cidade LIKE '%$pesq%' ORDER BY nome";
             }
             $resultado = mysqli_query($con, $sql) or die("Erro ao retornar dados");
- 
-        // Obtendo os dados por meio de um loop while
+        
         while ($registro = mysqli_fetch_array($resultado)) {
             $nome = $registro['nome'];
             $endereco = $registro['endereco'];
@@ -70,12 +69,14 @@
             echo "<td>".$celular."</td>";
             echo "<td>".$data_nasc."</td>";
             echo "<td>".$salario."</td>";
+            echo "<td><a href='../edita/cliente.php?id=". $registro['id']."'>Editar</a></td>"; 
+            echo "<td><a href='../excluir/cliente.php?id=". $registro['id']. "'>Excluir </a></td></tr>"; 
             echo "</tr>";
         }
         mysqli_close($con);
         
         ?>
         </table>
-        <a href="../consulta/cliente.php">VOLTAR</a>     
+           
     </body> 
 </html>
