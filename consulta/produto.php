@@ -10,7 +10,7 @@
         <a href="../index.html"><button>VOLTAR</button></a>
         <form method="POST">
         <label> Filtro = </label>
-        <input type="text" size="80" maxlength="100" name="filt" placeholder="NOME DO PRODUTO"  >        
+        <input type="text" size="80" maxlength="100" name="filt" placeholder="NOME DO PRODUTO">        
         <input type="submit" name="enviar" value="FILTRAR">
         <input type="reset" name="limpar" value="LIMPAR">
         </form>

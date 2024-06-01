@@ -20,4 +20,21 @@ JOIN
 JOIN 
     vendedor v ON ped.id_vendedor = v.id;
 
-
+CREATE VIEW dtl_cliente AS SELECT
+    ped.id,
+    ped.data,
+    c.nome AS clientes,
+    v.nome AS vendedor,
+    prod.nome AS produto,
+    prod.preco AS preco_produto,
+    it.qtde AS quantidade
+FROM
+    pedidos ped
+JOIN
+    clientes c ON ped.id_cliente = c.id
+JOIN
+    itens_pedido it ON ped.id = it.id_pedido
+JOIN
+    produto prod ON it.id_produto = prod.id
+JOIN
+    vendedor v ON ped.id_vendedor = v.id;

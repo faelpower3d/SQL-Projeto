@@ -31,7 +31,7 @@
             $result1 = mysqli_query($con, $query1);
         }
 
-        if ($result && $result1) {
+        if ($result && $result1) {            
             echo "Inclusão realizada com sucesso!";
         } else {
             echo "ERRO AO INSERIR OS DADOS: " . mysqli_connect_error();
