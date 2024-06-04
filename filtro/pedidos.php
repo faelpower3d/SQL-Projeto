@@ -1,20 +1,21 @@
 <html> 
     <head> 
     <meta charset="UTF-8">
-    <title>Pedidos</title>    
+    <title>Pedidos</title> 
     </head> 
     <body>         
         <h1>PEDIDOS</h1> 
         <a href="../inclusao/pedido.php"><button>NOVO</button></a>              
         <a href="../index.html"><button>VOLTAR</button></a> 
-        <form method="POST" action="../filtro/pedidos.php">
+        <form method="POST" action="../relatorio/pedido.php">
         <label> Filtro </label>
-        <input type="date" size="80" maxlength="100" name="data1"><span>a</span>
-        <input type="date" size="80" maxlength="100" name="data2">             
-        <input type="submit" name="enviar" value="Filtrar">
-        <input type="reset" name="limpar" value="Limpar">               
-        </form>
+        <input type="date" size="80" maxlength="100" name="data1"
+        value="<?php echo isset($_POST['data1']) ? htmlspecialchars($_POST['data1']) : ''; ?>"><span>a</span>
+        <input type="date" size="80" maxlength="100" name="data2"
+        value="<?php echo isset($_POST['data2']) ? htmlspecialchars($_POST['data2']) : ''; ?>">             
+        <input type="submit" name="enviar" value="GERAR PDF">
         
+        </form>
         
       
        
