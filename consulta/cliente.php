@@ -52,7 +52,7 @@
             $rg = $registro['rg'];
             $telefone = $registro['telefone'];
             $celular = $registro['celular'];
-            $data_nasc = $registro['data_nasc'];
+            $data_nasc = date('d-m-Y', strtotime($registro['data_nasc']));
             $salario = $registro['salario'];
  
             echo "<tr>";

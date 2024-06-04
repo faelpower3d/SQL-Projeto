@@ -17,9 +17,8 @@
         <form method="POST" >  
         <table border="1" width="100%" > 
         <tr>
-            <th>NOME</th>
-            <th>TD ESTOQUE</th>
-            <th>PRECO</th>
+            <th>PRODUTOS</th>
+            <th>ESTOQUE</th>            
             <th>UNID. MEDIDA</th>
             <th>PROMOÇÃO</th>
         </tr>
@@ -35,8 +34,7 @@
 
             while ($reg = mysqli_fetch_array($resu)) {
                 $nome = $reg["nome"];
-                $qtde_estoque = $reg["qtde_estoque"];
-                $preco = $reg["preco"];
+                $qtde_estoque = $reg["qtde_estoque"];                
                 $unidade_medida = $reg["unidade_medida"];
                 $promocao = $reg["promocao"];
 
@@ -45,8 +43,7 @@
                 echo "<td>".$nome."</td>";
                 echo "<td>".$qtde_estoque."</td>";
                 echo "<td>".$unidade_medida."</td>";
-                echo "<td>".$promocao."</td>";
-                
+                echo "<td>".$promocao."</td>";                
                 echo "<td><a href='../edita/produto.php?id=". $reg['id']."'>Editar</a></td>"; 
                 echo "<td><a href='../excluir/produto.php?id=". $reg['id']. "'>Excluir </a></td></tr>";
                 }    
