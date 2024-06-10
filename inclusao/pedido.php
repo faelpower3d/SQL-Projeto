@@ -21,7 +21,7 @@
         $result = mysqli_query($con, $query);
         $id=mysqli_insert_id($con);
 
-        // Inserir todos os itens do pedido
+        
         $id_produto = $_POST["id_produto"];
         $qtde = $_POST["qtde"];
 
@@ -85,7 +85,7 @@
             </table> 
         </fieldset>
         <label> Observação: </label>
-        <input type="text" size="80" maxlength="100" name="observacao" required>
+        <input type="text" size="80" maxlength="100" name="observacao">
         <label> Forma de pagamento: </label>
         <select name="forma_pagto">
         <?php

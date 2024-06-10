@@ -1,48 +1,67 @@
 <?php
-include_once("../conexaoBanco/loja.php");
-$sql="SELECT * FROM ver_pedidos ORDER BY data";
-$result = mysqli_query($con,$sql) or die ("Erro rsrsrs");
-
-$linha ="";
-while ($registro = mysqli_fetch_array($result)){
-    $linha.="<tr><td>".date('d-m-Y', strtotime($registro['data']))."</td><td>".$registro['clientes']."</td><td>";
-    $linha.=$registro['produto']."</td><td>".$registro['quantidade']."</td><td>";
-    $linha.=$registro['forma_pagamento']."</td><td>";
-    $linha.=date('d-m-Y', strtotime($registro['prazo_entrega']))."</td><td>";
-    $linha.=$registro['vendedor']."</td>";
-    $linha.="<td>".$registro['observacao']."</td><td><br>";
-}
-
+require '../conexaoBanco/loja.php'; // Certifique-se de que o autoload do Composer está correto
 use Dompdf\Dompdf;
+use Dompdf\Options;
 
-require_once("../dompdf/autoload.inc.php");
+include '../dompdf/autoload.inc.php';
 
-$dompdf = new DOMPDF();
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['data_inicio']) && isset($_GET['data_fim'])) {
+    $data_inicio = $_GET['data_inicio'];
+    $data_fim = $_GET['data_fim'];
 
-$dompdf->load_html('
-        <h1>RELATORIO DE PEDIDOS </h1>
-        <hr>
-        <table width="100%">
-        <tr>
-        <td>DATA</td>
-        <td>CLIENTES</td>
-        <td>PRODUTOS</td>
-        <td>QUANTIDADES</td>
-        <td>FORMA PAGAMENTO</td>
-        <td>PRAZO ENTREGA</td>
-        <td>VENDEDOR</td>
-        <td>OBSERVACOES</td>
-        </tr>'.$linha.'</table>');
+    // Consulta para calcular o total vendido e a comissão recebida por cada vendedor
+    $sql = "SELECT v.nome AS vendedor_nome, 
+                   SUM(i.qtde * p.preco) AS total_vendido,
+                   SUM(i.qtde * p.preco) * (v.perc_comissao / 100) AS comissao_recebida
+            FROM vendedor v
+            JOIN pedidos o ON v.id = o.id_vendedor
+            JOIN itens_pedido i ON o.id = i.id_pedido
+            JOIN produto p ON i.id_produto = p.id
+            WHERE o.data BETWEEN ? AND ?
+            GROUP BY v.id, v.nome
+            HAVING total_vendido > 0";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("ss", $data_inicio, $data_fim);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-$dompdf->setPaper('A4','landscape');
+    ob_start();
+    ?>
+    <h1>Relatório de Comissões</h1>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Nome do Vendedor</th>
+                <th>Total Vendido</th>
+                <th>Comissão Recebida</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($row['vendedor_nome']); ?></td>
+                    <td><?php echo number_format($row['total_vendido'], 2, ',', '.'); ?></td>
+                    <td><?php echo number_format($row['comissao_recebida'], 2, ',', '.'); ?></td>
+                </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+    <?php
+    $html = ob_get_clean();
 
-$dompdf->render();
-
-$dompdf ->stream(
-    "relatorio_medico.pdf",
-    array(
-        "Attachment"=> False //exibe pdf na tela pra fazer download direto altere para true
-    )
-    );
-
+    $options = new Options();
+    $options->set('isRemoteEnabled', true);
+    $dompdf = new Dompdf($options);
+    $dompdf->loadHtml($html);
+    $dompdf->setPaper('A4', 'portrait');
+    $dompdf->render();
+    $dompdf->stream("relatorio_comissoes.pdf", array("Attachment" => false));
+    exit(0);
+}
 ?>
+
+<form method="get" action="">
+    Data Início: <input type="date" name="data_inicio" required><br>
+    Data Fim: <input type="date" name="data_fim" required><br>
+    <input type="submit" value="Gerar Relatório">
+</form>
