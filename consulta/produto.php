@@ -21,6 +21,7 @@
             <th>ESTOQUE</th>            
             <th>UNID. MEDIDA</th>
             <th>PROMOÇÃO</th>
+            <th>PREÇO</th>
         </tr>
         <?php 
         include ('../conexaoBanco/loja.php'); 
@@ -37,13 +38,14 @@
                 $qtde_estoque = $reg["qtde_estoque"];                
                 $unidade_medida = $reg["unidade_medida"];
                 $promocao = $reg["promocao"];
-
+                $preco = $reg["preco"];
             
                 echo "<tr>";
                 echo "<td>".$nome."</td>";
                 echo "<td>".$qtde_estoque."</td>";
                 echo "<td>".$unidade_medida."</td>";
-                echo "<td>".$promocao."</td>";                
+                echo "<td>".$promocao."</td>";     
+                echo "<td>".$preco."</td>";             
                 echo "<td><a href='../edita/produto.php?id=". $reg['id']."'>Editar</a></td>"; 
                 echo "<td><a href='../excluir/produto.php?id=". $reg['id']. "'>Excluir </a></td></tr>";
                 }    
