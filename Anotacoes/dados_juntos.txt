@@ -56,3 +56,218 @@ id_pedido INTEGER REFERENCES pedidos(id) ,
 id_produto INTEGER REFERENCES produto(id) ,
 qtde INTEGER NOT NULL
 )ENGINE INNODB;
+
+-- Cliente 1
+INSERT INTO clientes(nome, endereco, numero, bairro, cidade, estado, email, cpf_cnpj, rg, telefone, celular, data_nasc, salario)
+VALUES ('Maria Oliveira', 'Avenida das Palmeiras', '456', 'Jardim Primavera', 'Rio de Janeiro', 'RJ', 'maria@email.com', '98765432100', '8765432-1', '(21) 9876-5432', '(21) 1234-5678', '1985-10-15', 6000.00);
+
+-- Cliente 2
+INSERT INTO clientes(nome, endereco, numero, bairro, cidade, estado, email, cpf_cnpj, rg, telefone, celular, data_nasc, salario)
+VALUES ('Pedro Santos', 'Rua das Pedras', '789', 'Centro', 'Belo Horizonte', 'MG', 'pedro@email.com', '23456789011', '9876543-2', '(31) 2345-6789', '(31) 8765-4321', '1978-08-25', 5500.00);
+
+-- Cliente 3
+INSERT INTO clientes(nome, endereco, numero, bairro, cidade, estado, email, cpf_cnpj, rg, telefone, celular, data_nasc, salario)
+VALUES ('Ana Pereira', 'Travessa das Oliveiras', '101', 'Vila Nova', 'Porto Alegre', 'RS', 'ana@email.com', '34567890122', '7654321-3', '(51) 3456-7890', '(51) 6543-2109', '1992-03-30', 4800.00);
+
+-- Cliente 4
+INSERT INTO clientes(nome, endereco, numero, bairro, cidade, estado, email, cpf_cnpj, rg, telefone, celular, data_nasc, salario)
+VALUES ('Carlos Silva', 'Alameda dos Pinheiros', '222', 'Jardim América', 'São Paulo', 'SP', 'carlos@email.com', '45678901233', '6543210-4', '(11) 3456-7890', '(11) 9876-5432', '1980-12-05', 7000.00);
+
+-- Cliente 5
+INSERT INTO clientes(nome, endereco, numero, bairro, cidade, estado, email, cpf_cnpj, rg, telefone, celular, data_nasc, salario)
+VALUES ('Mariana Costa', 'Rua dos Lírios', '333', 'Floresta', 'Salvador', 'BA', 'mariana@email.com', '56789012344', '5432109-5', '(71) 4567-8901', '(71) 1234-5678', '1987-07-20', 5200.00);
+
+-- Cliente 6
+INSERT INTO clientes(nome, endereco, numero, bairro, cidade, estado, email, cpf_cnpj, rg, telefone, celular, data_nasc, salario)
+VALUES ('Fernanda Rodrigues', 'Rua das Violetas', '505', 'Centro', 'Florianópolis', 'SC', 'fernanda@email.com', '67890123455', '4321098-6', '(48) 2345-6789', '(48) 7654-3210', '1990-05-12', 5800.00);
+
+-- Cliente 7
+INSERT INTO clientes(nome, endereco, numero, bairro, cidade, estado, email, cpf_cnpj, rg, telefone, celular, data_nasc, salario)
+VALUES ('Gustavo Oliveira', 'Avenida das Acácias', '606', 'Jardim Botânico', 'Curitiba', 'PR', 'gustavo@email.com', '78901234566', '3210987-7', '(41) 3456-7890', '(41) 8765-4321', '1983-08-18', 6200.00);
+
+-- Cliente 8
+INSERT INTO clientes(nome, endereco, numero, bairro, cidade, estado, email, cpf_cnpj, rg, telefone, celular, data_nasc, salario)
+VALUES ('Luciana Santos', 'Alameda das Begônias', '707', 'Centro', 'Recife', 'PE', 'luciana@email.com', '89012345677', '2109876-8', '(81) 4567-8901', '(81) 2345-6789', '1975-12-28', 5400.00);
+
+-- Cliente 9
+INSERT INTO clientes(nome, endereco, numero, bairro, cidade, estado, email, cpf_cnpj, rg, telefone, celular, data_nasc, salario)
+VALUES ('Ricardo Souza', 'Rua das Magnólias', '808', 'Vila Velha', 'Vitória', 'ES', 'ricardo@email.com', '90123456788', '1098765-9', '(27) 5678-9012', '(27) 3456-7890', '1988-04-22', 5900.00);
+
+-- Cliente 10
+INSERT INTO clientes(nome, endereco, numero, bairro, cidade, estado, email, cpf_cnpj, rg, telefone, celular, data_nasc, salario)
+VALUES ('Aline Ferreira', 'Travessa das Orquídeas', '909', 'Parque das Flores', 'Campinas', 'SP', 'aline@email.com', '01234567899', '8765432-0', '(19) 6789-0123', '(19) 8901-2345', '1995-11-08', 5100.00);
+
+
+
+-- Vendedor 1
+INSERT INTO vendedor(nome, endereco, cidade, estado, celular, email, perc_comissao)
+VALUES ('Lucas Oliveira', 'Rua das Flores', 'São Paulo', 'SP', '(11) 98765-4321', 'lucas@email.com', 10.0);
+
+-- Vendedor 2
+INSERT INTO vendedor(nome, endereco, cidade, estado, celular, email, perc_comissao)
+VALUES ('Juliana Santos', 'Avenida das Palmeiras', 'Rio de Janeiro', 'RJ', '(21) 87654-3210', 'juliana@email.com', 12.5);
+
+-- Vendedor 3
+INSERT INTO vendedor(nome, endereco, cidade, estado, celular, email, perc_comissao)
+VALUES ('Pedro Silva', 'Rua dos Pinheiros', 'Belo Horizonte', 'MG', '(31) 7654-3210', 'pedro@email.com', 11.0);
+
+-- Vendedor 4
+INSERT INTO vendedor(nome, endereco, cidade, estado, celular, email, perc_comissao)
+VALUES ('Mariana Costa', 'Travessa das Oliveiras', 'Porto Alegre', 'RS', '(51) 6543-2109', 'mariana@email.com', 9.5);
+
+-- Vendedor 5
+INSERT INTO vendedor(nome, endereco, cidade, estado, celular, email, perc_comissao)
+VALUES ('Ana Pereira', 'Alameda das Azaleias', 'Salvador', 'BA', '(71) 5432-1098', 'ana@email.com', 11.5);
+
+-- Vendedor 6
+INSERT INTO vendedor(nome, endereco, cidade, estado, celular, email, perc_comissao)
+VALUES ('Gustavo Oliveira', 'Avenida dos Girassóis', 'Brasília', 'DF', '(61) 7654-3210', 'gustavo2@email.com', 10.0);
+
+-- Vendedor 7
+INSERT INTO vendedor(nome, endereco, cidade, estado, celular, email, perc_comissao)
+VALUES ('Fernanda Rodrigues', 'Rua das Margaridas', 'Fortaleza', 'CE', '(85) 8765-4321', 'fernanda2@email.com', 11.5);
+
+-- Vendedor 8
+INSERT INTO vendedor(nome, endereco, cidade, estado, celular, email, perc_comissao)
+VALUES ('Ricardo Souza', 'Alameda dos Cravos', 'Goiânia', 'GO', '(62) 9876-5432', 'ricardo2@email.com', 9.0);
+
+-- Vendedor 9
+INSERT INTO vendedor(nome, endereco, cidade, estado, celular, email, perc_comissao)
+VALUES ('Aline Ferreira', 'Travessa das Tulipas', 'Manaus', 'AM', '(92) 6789-0123', 'aline2@email.com', 12.0);
+
+-- Vendedor 10
+INSERT INTO vendedor(nome, endereco, cidade, estado, celular, email, perc_comissao)
+VALUES ('Gustavo Oliveira', 'Rua dos Jasmins', 'Natal', 'RN', '(84) 9012-3456', 'gustavo3@email.com', 9.5);
+
+
+
+INSERT INTO forma_pagto(descricao) VALUES ('Cartão de Crédito');
+
+INSERT INTO forma_pagto(descricao) VALUES ('Cartão de Débito');
+
+INSERT INTO forma_pagto(descricao) VALUES ('Dinheiro');
+
+INSERT INTO forma_pagto(descricao) VALUES ('PIX');
+
+
+
+-- Produto 1
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Camiseta Polo', 50, 29.99, 'PÇ', 'N');
+
+-- Produto 2
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Calça Jeans', 30, 49.99, 'PÇ', 'S');
+
+-- Produto 3
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Tênis Esportivo', 20, 79.99, 'PÇ', 'N');
+
+-- Produto 4
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Mochila', 15, 39.99, 'PÇ', 'N');
+
+-- Produto 5
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Relógio de Pulso', 40, 99.99, 'PÇ', 'N');
+
+-- Produto 6
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Óculos de Sol', 25, 59.99, 'PÇ', 'N');
+
+-- Produto 7
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Bolsa Feminina', 35, 39.99, 'PÇ', 'N');
+
+-- Produto 8
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Sapato Social', 40, 89.99, 'PÇ', 'N');
+
+-- Produto 9
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Boné', 20, 19.99, 'PÇ', 'S');
+
+-- Produto 10
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Bolsa Masculina', 15, 49.99, 'PÇ', 'N');
+
+-- Produto 11
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Jaqueta de Couro', 10, 149.99, 'PÇ', 'N');
+
+-- Produto 12
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Vestido Floral', 25, 69.99, 'PÇ', 'N');
+
+-- Produto 13
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Sapato Casual', 30, 79.99, 'PÇ', 'N');
+
+-- Produto 14
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Moletom', 20, 59.99, 'PÇ', 'N');
+
+-- Produto 15
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Bermuda Jeans', 15, 34.99, 'PÇ', 'S');
+
+-- Produto 16
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Sandália Rasteira', 20, 29.99, 'PÇ', 'N');
+
+-- Produto 17
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Cinto de Couro', 35, 19.99, 'PÇ', 'N');
+
+-- Produto 18
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Blusa de Tricot', 40, 49.99, 'PÇ', 'N');
+
+-- Produto 19
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Shorts Esportivo', 25, 24.99, 'PÇ', 'N');
+
+-- Produto 20
+INSERT INTO produto (nome, qtde_estoque, preco, unidade_medida, promocao)
+VALUES ('Bolsa de Viagem', 10, 99.99, 'PÇ', 'N');
+
+CREATE VIEW ver_pedidos AS SELECT
+ped.id,
+ped.data,
+c.nome as clientes,
+prod.nome as produto,
+it.qtde as quantidade,
+f.descricao as forma_pagamento,
+ped.prazo_entrega,
+v.nome as vendedor,
+ped.observacao
+FROM pedidos ped
+JOIN 
+    clientes c ON ped.id_cliente = c.id
+JOIN 
+    itens_pedido it ON ped.id = it.id_pedido
+JOIN 
+    produto prod ON it.id_produto = prod.id
+JOIN 
+    forma_pagto f ON ped.forma_pagto = f.id
+JOIN 
+    vendedor v ON ped.id_vendedor = v.id;
+
+CREATE VIEW dtl_cliente AS SELECT
+    ped.id,
+    ped.data,
+    c.nome AS clientes,
+    v.nome AS vendedor,
+    prod.nome AS produto,
+    prod.preco AS preco_produto,
+    it.qtde AS quantidade
+FROM
+    pedidos ped
+JOIN
+    clientes c ON ped.id_cliente = c.id
+JOIN
+    itens_pedido it ON ped.id = it.id_pedido
+JOIN
+    produto prod ON it.id_produto = prod.id
+JOIN
+    vendedor v ON ped.id_vendedor = v.id;
